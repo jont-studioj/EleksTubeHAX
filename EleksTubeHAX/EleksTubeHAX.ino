@@ -85,9 +85,10 @@ void loop() {
     tfts.toggleAllDisplays();
   }
 
+if ( tfts.isEnabled() ) {	// hack to do almost nothing at all if "off"
+
   // Update the clock.
   updateClockDisplay();
-
 
   // Menu
   if (menu.stateChanged()) {
@@ -183,6 +184,8 @@ void loop() {
       }
     }
   }
+
+}// end-if of hack to do almost nothing at all if "off"
 
   // Sleep for up to 20ms, less if we've spent time doing stuff above.
   uint32_t time_in_loop = millis() - millis_at_top;
